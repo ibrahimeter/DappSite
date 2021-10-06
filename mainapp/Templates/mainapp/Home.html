@@ -1,0 +1,45 @@
+{%  extends 'mainapp/Base.html' %}
+
+{% block content %}
+
+{%  include 'mainapp/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-7">
+		<h5>HISTORY OF SCHEDULE MAINTENANCE</h5>
+		<hr>
+		<div class="card card-body textcenter">
+			<a class="btn btn-primary " href="{% url 'create_main' %}">Create Maintenance</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Unit</th>
+					<th>Maintenance Description</th>
+					<th>EOH</th>
+					<th>Maintenance Date</th>
+					<th>Firm</th>
+				</tr>
+
+				{% for main in maintenance %}
+				<tr>
+					<td>{{main.unit}}</td>
+					<td>{{main.MainDesc}}</td>
+					<td>{{main.EOH}}</td>
+					<td>{{main.MainDate}}</td>
+					<td>{{main.Firm}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_main' main.id %}">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_main' main.id %}">Delete</a></td>
+
+				</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

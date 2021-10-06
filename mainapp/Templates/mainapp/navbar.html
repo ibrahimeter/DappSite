@@ -1,0 +1,26 @@
+
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <img src="{% static 'images/edllogo.png' %}" >
+ 
+ 
+  <div class="collapse navbar-collapse" id="navbarNav" >
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        
+        {% if user.is_authenticated %}
+          
+            <div class="col-md">  
+              <div class="card text-center text-black  mb-2"> Hi {{user}} </div>
+            </div>
+          
+        {% else %}
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+        {% endif %}
+     
+      </li>
+      
+    </ul>
+  </div>
+</nav>
